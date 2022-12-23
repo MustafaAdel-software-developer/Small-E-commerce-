@@ -66,7 +66,9 @@ export class AllProductsComponent implements OnInit {
       this.addToLocalStorage = JSON.parse(
         localStorage.getItem('products') || '[]'
       );
-      let exist = this.addToLocalStorage.find((item) => item.id == event.id);
+      let exist = this.addToLocalStorage.find(
+        (item) => item.product.id == event.product.id
+      );
       if (exist) {
         alert('is Existed');
       } else {

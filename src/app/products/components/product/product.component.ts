@@ -6,11 +6,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
+  display: boolean = false;
+  amount: number = 0;
   @Input() loading: boolean = true;
   @Input() product: any;
   @Output() event: any = new EventEmitter<any>();
 
   add() {
-    this.event.emit(this.product);
+    this.event.emit({ product: this.product, quantity: this.amount });
   }
 }

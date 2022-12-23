@@ -6,7 +6,18 @@
     <p>{{ product.description }}</p>
   </div>
   <div class="px-3 mb-2 d-flex justify-content-between align-items-center">
-    <div class="btn btn-success" (click)="add()">Add To Cart</div>
+    <div
+      class="btn btn-success"
+      *ngIf="!display"
+      (click)="display = true"
+      (click)="add()"
+    >
+      Add To Cart
+    </div>
+    <div class="d-flex w-50" *ngIf="display">
+      <input type="number" class="form-control m-1" [(ngModel)]="amount" />
+      <button class="btn btn-danger" (click)="add()">Add</button>
+    </div>
     <span>{{ product.price }}L.E</span>
   </div>
 </div>

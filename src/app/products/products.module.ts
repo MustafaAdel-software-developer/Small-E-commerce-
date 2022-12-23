@@ -5,9 +5,14 @@ import { ProductsDetailsComponent } from './components/products-details/products
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './components/product/product.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AllProductsComponent, ProductsDetailsComponent, ProductComponent],
-  imports: [CommonModule, HttpClientModule, SharedModule],
+  declarations: [
+    AllProductsComponent,
+    ProductsDetailsComponent,
+    ProductComponent,
+  ],
+  imports: [CommonModule, HttpClientModule, SharedModule, FormsModule],
 })
 export class ProductsModule {}
