@@ -1,27 +1,13 @@
 <div class="mt-5">
   <div class="my-2 w-25">
-    <label class="my-1">categories:</label>
-    <select class="form-control mb-4" (change)="filterCategories($event)">
-      <option value="All" selected>All</option>
-      <option *ngFor="let c of categories" value="{{ c }}">{{ c }}</option>
-    </select>
+    <app-select
+      [data]="categories"
+      [title]="'Categories'"
+      (selectedCategory)="recievedCategory($event)"
+    ></app-select>
   </div>
-  <div class="row">
-    <div class="col-md-3 col-sm-12" *ngFor="let product of products">
-      <div class="item">
-        <img src="{{ product.image }}" alt="" />
-        <div class="body">
-          <h4>{{ product.title }}</h4>
-          <span>{{ product.rating.rate }}</span>
-          <p>{{ product.description }}</p>
-        </div>
-        <div
-          class="px-3 mb-2 d-flex justify-content-between align-items-center"
-        >
-          <div class="btn btn-success">Add To Cart</div>
-          <span>{{ product.price }}L.E</span>
-        </div>
-      </div>
-    </div>
+  <app-product [loading]="loading" [products]="products"></app-product>
+  <div *ngIf="loading" class="text-center w-100">
+    <app-spinner></app-spinner>
   </div>
 </div>

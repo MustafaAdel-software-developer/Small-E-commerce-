@@ -7,6 +7,7 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./all-products.component.scss'],
 })
 export class AllProductsComponent implements OnInit {
+  loading: boolean = false;
   category: string = '';
   products: any[] = [];
   categories: any[] = [];
@@ -18,27 +19,42 @@ export class AllProductsComponent implements OnInit {
   }
 
   getAllProducts() {
+    this.loading = true;
     this.productService.getAllProducts().subscribe(
       (item: any) => {
+        this.loading = false;
         this.products = item;
       },
-      (err) => console.log(err)
+      (err) => {
+        this.loading = false;
+        console.log(err);
+      }
     );
   }
   getAllCategories() {
+    this.loading = true;
     this.productService.getAllCategories().subscribe(
       (item: any) => {
+        this.loading = false;
         this.categories = item;
       },
-      (err) => console.log(err)
+      (err) => {
+        this.loading = false;
+        console.log(err);
+      }
     );
   }
-  filterCategories(event: any) {
+  recievedCategory(event: any) {
     this.category = event.target.value;
-    this.getProductsByCategory(this.category);
+    this.category == 'All'
+      ? this.getAllProducts()
+      : this.getProductsByCategory(this.category);
   }
+
   getProductsByCategory(event: any) {
+    this.loading = true;
     this.productService.getProductsByCategory(event).subscribe((item: any) => {
+      this.loading = false;
       this.products = item;
     });
   }
