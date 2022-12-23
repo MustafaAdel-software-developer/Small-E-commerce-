@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 
@@ -11,6 +12,7 @@ export class AllProductsComponent implements OnInit {
   category: string = '';
   products: any[] = [];
   categories: any[] = [];
+  addToLocalStorage: any[] = [];
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
@@ -57,5 +59,26 @@ export class AllProductsComponent implements OnInit {
       this.loading = false;
       this.products = item;
     });
+  }
+
+  addToCart(event: any) {
+    if ('products' in localStorage) {
+      this.addToLocalStorage = JSON.parse(
+        localStorage.getItem('products') || '[]'
+      );
+      let exist = this.addToLocalStorage.find((item) => item.id == event.id);
+      if (exist) {
+        alert('is Existed');
+      } else {
+        this.addToLocalStorage.push(event);
+        localStorage.setItem(
+          'products',
+          JSON.stringify(this.addToLocalStorage)
+        );
+      }
+    } else {
+      this.addToLocalStorage.push(event);
+      localStorage.setItem('products', JSON.stringify(this.addToLocalStorage));
+    }
   }
 }

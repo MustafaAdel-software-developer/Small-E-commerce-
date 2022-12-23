@@ -6,7 +6,14 @@
       (selectedCategory)="recievedCategory($event)"
     ></app-select>
   </div>
-  <app-product [loading]="loading" [products]="products"></app-product>
+  <div *ngIf="!loading" class="row">
+    <div class="col-md-3 col-sm-12" *ngFor="let product of products">
+      <app-product
+        [product]="product"
+        (event)="addToCart($event)"
+      ></app-product>
+    </div>
+  </div>
   <div *ngIf="loading" class="text-center w-100">
     <app-spinner></app-spinner>
   </div>
