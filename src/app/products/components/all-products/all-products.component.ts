@@ -67,7 +67,7 @@ export class AllProductsComponent implements OnInit {
         localStorage.getItem('products') || '[]'
       );
       let exist = this.addToLocalStorage.find(
-        (item) => item.product.id == event.product.id
+        (item: any) => item.product.id == event.product.id
       );
       if (exist) {
         alert('is Existed');

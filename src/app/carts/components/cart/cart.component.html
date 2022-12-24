@@ -2,9 +2,15 @@
   <h1 class="text-danger">Shopping Cart</h1>
   <div class="headCart">
     <p class="lead">
-      You have <label class="text-danger">2</label> item in your cart
+      You have
+      <label class="text-danger" *ngIf="products.length">{{
+        products.length
+      }}</label>
+      items in your cart
     </p>
-    <span class="text-danger card-header">Clear Shopping Cart</span>
+    <span class="text-danger card-header" (click)="clear()"
+      >Clear Shopping Cart</span
+    >
   </div>
   <table class="table table-striped">
     <thead>
@@ -18,18 +24,43 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><img src="" alt="" /></td>
-        <td>Test title</td>
-        <td>150 L.E</td>
+      <tr *ngFor="let product of products; let index = index">
+        <td><img src="{{ product.product.image }}" alt="" /></td>
+        <td>{{ product.product.title }}</td>
+        <td>{{ product.product.price }} L.E</td>
         <td>
           <div class="quantity">
-            <button class="btn btn-dark">+</button>
-            <input class="form-control" type="number" min="1" />
-            <button class="btn btn-dark">-</button>
+            <button class="btn btn-dark" (click)="incQuantity(index)">+</button>
+            <input
+              class="form-control"
+              type="number"
+              min="1"
+              [(ngModel)]="product.quantity"
+              (change)="detectChange()"
+            />
+            <button class="btn btn-dark" (click)="descQuantity(index)">
+              -
+            </button>
           </div>
+        </td>
+        <td>{{ product.product.price * product.quantity }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(index)">Delete</button>
         </td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Total : {{ total }} L.E</th>
+        <th><button class="btn btn-success">Order Now</button></th>
+      </tr>
+    </tfoot>
   </table>
+</div>
+<div class="alert alert-success" role="alert">
+  <strong>Well done!</strong> Your order is successfully send
 </div>
