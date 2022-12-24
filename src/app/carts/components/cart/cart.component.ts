@@ -50,4 +50,16 @@ export class CartComponent implements OnInit {
     this.getTotal();
     localStorage.setItem('products', JSON.stringify(this.products));
   }
+
+  addCart() {
+    const arrOfId = this.products.map((item: any) => {
+      return { productId: item.product.id, quantity: item.quantity };
+    });
+    let model = {
+      userId: 1,
+      date: new Date(),
+      products: [arrOfId],
+    };
+    console.log(model);
+  }
 }
