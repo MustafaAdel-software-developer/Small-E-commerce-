@@ -1,5 +1,5 @@
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { ProductService } from '../../services/product.service';
 export class AllProductsComponent implements OnInit {
   loading: boolean = false;
   category: string = '';
-  products: any[] = [];
+  products: Product[] = [];
   categories: any[] = [];
-  addToLocalStorage: any[] = [];
+  addToLocalStorage: Product[] = [];
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { ProductService } from '../../services/product.service';
 export class ProductsDetailsComponent implements OnInit {
   loading: boolean = false;
   id: number;
-  item: any;
+  item!: Product;
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService
