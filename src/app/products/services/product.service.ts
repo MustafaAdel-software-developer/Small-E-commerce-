@@ -20,4 +20,7 @@ export class ProductService {
       `${environment.baseApi}products/category/${event}`
     );
   }
+  getProductById(id: number) {
+    return this.httpClient.get(`${environment.baseApi}products/${id}`);
+  }
 }

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './components/product/product.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,12 @@ import { FormsModule } from '@angular/forms';
     ProductsDetailsComponent,
     ProductComponent,
   ],
-  imports: [CommonModule, HttpClientModule, SharedModule, FormsModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    SharedModule,
+    FormsModule,
+    RouterModule,
+  ],
 })
 export class ProductsModule {}

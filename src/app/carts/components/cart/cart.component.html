@@ -1,1 +1,35 @@
-<p>cart works!</p>
+<div class="cartBox">
+  <h1 class="text-danger">Shopping Cart</h1>
+  <div class="headCart">
+    <p class="lead">
+      You have <label class="text-danger">2</label> item in your cart
+    </p>
+    <span class="text-danger card-header">Clear Shopping Cart</span>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>
+        <th style="width: 25%">Quantity</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="" alt="" /></td>
+        <td>Test title</td>
+        <td>150 L.E</td>
+        <td>
+          <div class="quantity">
+            <button class="btn btn-dark">+</button>
+            <input class="form-control" type="number" min="1" />
+            <button class="btn btn-dark">-</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
