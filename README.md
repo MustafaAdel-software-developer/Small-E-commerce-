@@ -1,1 +1,1 @@
-# Small-E-commerce-
+creating small E-commerce using Angular
